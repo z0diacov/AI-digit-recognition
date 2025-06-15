@@ -1,0 +1,27 @@
+< 900 16 16 10
+< 100 10 0.001
+< Matrix W1(INPUT_DIM, H1_DIM)
+< Matrix W2(H1_DIM, H2_DIM)
+< Matrix W3(H2_DIM, OUT_DIM)
+< Matrix B1(1, H1_DIM)
+< Matrix B2(1, H2_DIM)
+< Matrix B3(1, OUT_DIM)
+
+<   Matrix X(1, INPUT_DIM)
+    Matrix Y_FULL(1, INPUT_DIM)
+
+> i, E
+
+<   Matrix X(1, INPUT_DIM)
+    Matrix Y_FULL(1, INPUT_DIM)
+
+> i, E
+
+...
+
+> Matrix W1(INPUT_DIM, H1_DIM)
+> Matrix W2(H1_DIM, H2_DIM)
+> Matrix W3(H2_DIM, OUT_DIM)
+> Matrix B1(1, H1_DIM)
+> Matrix B2(1, H2_DIM)
+> Matrix B3(1, OUT_DIM)

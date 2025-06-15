@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/popup.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/open-close.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/learning.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/no-animation.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/scrollbar.css') }}?v={{ time }}">
+    <title>learning</title>
+</head>
+<body>
+    <div class="btn-learn back-container">
+        <button id="backButton" class="learn-button back-button">Back</button>
+    </div>
+    <div class="menu" id="menu">
+        <div class="menu-btn">
+            <label class="container menu-btn">
+                <input type="checkbox" id="open-menu">
+                <svg fill="white" viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="chevron-right"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+            </label>
+        </div>
+        <nav class="nn-list" data-trash-icon="{{ url_for('static', path='svg/delete_folder.svg') }}">
+            <div class="scroll-container">
+                {% for folder in folders %}
+                <li class="{% if folder == AI %}current-nn{% endif %}">
+                    <a class="active-page">{{ folder }}</a>
+                </li>
+                {% endfor %}
+            </div>
+        </nav>
+    </div>
+    <div class="main-container">
+        <div class="websocket-wrapper">
+            <div class="websocket-container">
+                <h1 class="websocket-title">Learning</h1>
+    
+                <div class="percent-container">
+                    <h4 id="percent" class="percent"> 
+                        Training progress: 
+                        <span id="progress">
+                            
+                        </span>
+                    </h4>
+                </div>
+    
+                <div class="websocket-form-group">
+                    <label for="iterations" class="websocket-label">Number of iterations:</label>
+                    <input type="number" id="iterations" min="1000" max="1000000" step="100" value="10000" class="websocket-input">
+                </div>
+    
+                <div class="websocket-form-group">
+                    <label for="learningRate" class="websocket-label">Learning rate:</label>
+                    <input type="number" id="learningRate" min="0.001" max="0.999" step="0.001" value="0.01" class="websocket-input">
+                </div>
+    
+                <div class="websocket-status-container">
+                    Status: <span id="status" style="color: {% if state == 'ready' %}#99f2c8{% else %}#ff7043{% endif %};">{{ state }}</span>
+                </div>
+    
+                <button id="send" class="websocket-button">Start Learning</button>
+            </div>
+    
+            <div class="graph-container">
+                <div id="graph"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', path='js/websocketTest.js') }}?v={{ time }}"></script>
+    <script type="module" src="{{ url_for('static', path='js/menu.js') }}?v={{ time }}"></script>
+    <script type="module" src="{{ url_for('static', path='js/noAnimation.js') }}?v={{ time }}"></script>
+    <script type="module" src="{{ url_for('static', path='js/backBtn.js') }}?v={{ time }}"></script>
+</body>
+
+
+</html>

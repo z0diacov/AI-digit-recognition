@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/popup.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/open-close.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/scrollbar.css') }}?v={{ time }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/no-animation.css') }}?v={{ time }}">
+</head>
+<body>
+    <div class="menu" id="menu">
+        <div class="menu-btn">
+            <label class="container menu-btn">
+                <input type="checkbox" id="open-menu">
+                <svg fill="white" viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="chevron-right"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+            </label>
+        </div>
+        <nav class="nn-list" data-trash-icon="{{ url_for('static', path='svg/delete_folder.svg') }}">
+            <div class="button-panel">
+                <button id="create-folder-btn" class="create-folder">
+                    <img src="{{ url_for('static', path='svg/new_folder.svg') }}" class="icon">
+                </button>
+            </div>
+            {% for folder in folders %}
+                <li>
+                    <a class="active-page">
+                        {{ folder }}
+                    </a>
+                    <img class="trash-icon">
+                </li>
+            {% endfor %}
+        </nav>
+    </div>
+    <div class="main-container">
+        <div class="content-section">
+            <button id="flip-button" class="action-button">To NN digit</button>
+            <div class="content-wrapper">
+                <div class="canvas-wrapper">
+                    <div class="canvas-container">
+                        <canvas id="canvas-front" width="600" height="600">Ваш браузер не поддерживает элемент canvas.</canvas>
+                        <canvas id="canvas-back" width="600" height="600">Ваш браузер не поддерживает элемент canvas.</canvas>
+                    </div>
+                </div>
+                <div class="info-wrapper">
+                    <div class="output-section">
+                        <p id="recognized-output">Recognized Number:</p>
+                        <div class="output-square">
+                            <span id="recognized-number"></span>
+                        </div>
+                    </div>
+                    <div class="probability-wrapper">
+                        <div class="probability-table">
+                            <table id="probability-table">
+                                <thead>
+                                    <tr>
+                                        <th>Digit</th>
+                                        <th>Probability</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="probability-values">
+                                    <tr><td>0</td><td id="probability-0" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>1</td><td id="probability-1" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>2</td><td id="probability-2" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>3</td><td id="probability-3" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>4</td><td id="probability-4" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>5</td><td id="probability-5" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>6</td><td id="probability-6" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>7</td><td id="probability-7" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td>8</td><td id="probability-8" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                    <tr><td style="overflow: hidden;">9</td><td id="probability-9" style="color: rgb(254, 113, 68);">0%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="clear" class="action-button">Clear</button>
+                <button id="ready" class="action-button">Recognize</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', path='js/script.js') }}?v={{ time }}"></script>
+    <script type="module" src="{{ url_for('static', path='js/popup.js') }}?v={{ time }}"></script>
+    <script type="module" src="{{ url_for('static', path='js/menu.js') }}?v={{ time }}"></script>
+</body>
+</html>
