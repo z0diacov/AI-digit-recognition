@@ -1,1 +1,2 @@
-A neural network written in C++ and a shell in the form of a website for it (The website is written purely for the shell)
+A neural network written in C++ and a shell in the form of a website for it. 
+Important: The backend is a lightweight wrapper around the neural network executable. It was written as a quick integration prototype using FastAPI, without strict adherence to REST architecture. The focus was on fast experimentation and integration with file-based models rather than scalable API design or clean architecture. The server acts mainly as a bridge between the frontend and the neural core, with minimum abstraction and validation.
